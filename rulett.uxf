@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>248</y>
+      <w>224</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>RouletteNumber
+--
+-final int number;
+-final Color color;
+--
++ RouletteNumber(int number, Color color);
++ int getNumber;
++ String getColor;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>136</y>
+      <w>232</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>RouletteWheel
+--
++ static final List&lt;RouletteNumber&gt; numbers;
+--
++ RouletteWheel ();
++ List&lt;RouletteNumber&gt; getNumbers;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>712</x>
+      <y>200</y>
+      <w>32</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=37</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>120</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;Interface&gt;
+Casino
+--
++static final minBet;
++static final maxBet;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>288</y>
+      <w>136</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>&lt;Abstract Class&gt;
+Player
+--
+- int startBudget;
+- int currentBudget;
+- boolean isPlay;
+- int currentBet;
+--
++ Player(int startbudget);
++ int getCurrentBet();
++ int getStartBudget;
++ int getCurrentBudget;
++ boolean getIsPlay;
++ int getBet;
++ void setCurrentBudget;
++ void setIsPlay;
++ BetOption strategy</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8</x>
+      <y>520</y>
+      <w>184</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>BelaPlayer
+--
+- boolean prevRoundLooser;
+- int originalBet;
+--
++ void doubleBet();
++ void setPrevRoundLoose;
++ BetOption strategy</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>264</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;Enum&gt;
+BetOption
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>88</y>
+      <w>224</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Game
+--
+- Set&lt;Player&gt; players;
+- Map&lt;Player, BetOption&gt; currentRound;
+--
++ Game();
++ Game(int number);
+
+- void spin();
++ void giveYourNumber();
+- void checkWinners();
+- void changePlayersBudget();
+
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>8</y>
+      <w>96</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Croupier
+--
++ Main();
++ simulation();
++ multiplayer();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>64</x>
+      <y>416</y>
+      <w>296</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>152</y>
+      <w>64</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>64</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>160</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>240</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>248</x>
+      <y>288</y>
+      <w>112</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>208</x>
+      <y>576</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>RandomColorPlayer
+--
+--
++ BetOption strategy();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>576</y>
+      <w>128</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FullRandomPlayer
+--
+--
++ BetOption strategy();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>576</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ConservativePlayer
+--
+--
++ BetOption strategy();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>608</x>
+      <y>576</y>
+      <w>128</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>BravePlayer
+--
+--
++ BetOption strategy();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>248</x>
+      <y>504</y>
+      <w>112</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>504</y>
+      <w>24</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>504</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>408</y>
+      <w>216</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>384</y>
+      <w>80</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;Enum&gt;
+Color
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>712</x>
+      <y>336</y>
+      <w>48</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>752</x>
+      <y>576</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>HumanPlayer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>384</y>
+      <w>336</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;240.0</additional_attributes>
+  </element>
+</diagram>
