@@ -33,11 +33,11 @@ public class Game implements Casino  {
     
     public Game(){
         players.add(new BelaPlayer(10000));
-        players.add(new BravePlayer(10000));
-        players.add(new ConservativePlayer(10000));
-//        players.add(new FullRandomPlayer(10000));
-        players.add(new RandomColorPlayer(10000));
-//        players.add(new WaitingPlayer(10000));            
+//        players.add(new BravePlayer(10000));
+//        players.add(new ConservativePlayer(10000));
+////        players.add(new FullRandomPlayer(10000));
+//        players.add(new RandomColorPlayer(10000));
+////        players.add(new WaitingPlayer(10000));            
     }
     
     // egy adott kör végigvitele
@@ -79,23 +79,24 @@ public class Game implements Casino  {
                boolean b;
                 if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
-                    b = false;
+                    b = true;
                 } else if (ProcessorBetOption.getBetOptionAs_Integer(player.myBet())!= null) {
                     if(ProcessorBetOption.getBetOptionAs_Integer(player.myBet()) == (RouletteWheel.numbers.get(currentSolution).getNumber())){
-                    winners.add(player);
-                    b = false;
+                        winners.add(player);
+                        b = true;
                     }else {
                         losers.add(player);
+                        b = false;
                     }
                 } else {
                     losers.add(player);
-                    b = true;
+                    b = false;
                 }
                 if (player.getId() == PlayerID.BELA) {
                    BelaPlayer bela = (BelaPlayer)(player);
                    bela.setPrevRoundLoser(b);
                 }
-           }  
+            }
         }
     }
     

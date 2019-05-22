@@ -94,10 +94,12 @@ public class Croupier {
             game.getRound();
             
         }
+        System.out.println(game.history.size());
         for (int j = 0; j < game.history.size(); j++) {
+            
                 System.out.println((j+1)+". menet "+game.history.get(j).getPlayerId()+" "+game.history.get(j).getBet()+" Ft tét. "+game.history.get(j).getGiveYourNumber()+" fogadás -"+game.history.get(j).isWinner()+" kimenetel - "+game.history.get(j).getCurrentBudget()+" jelenlegi pénze.");
                 
-            }
+        }
     }
 }
     
