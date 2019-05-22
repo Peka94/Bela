@@ -132,4 +132,19 @@ public class BetOptionProcessor {
     public static String getRandomly_Odd_EvenAs_String() {
         return getRandomly_Odd_EvenAs_BetOption().toString().substring(1);
     }
+
+    /**
+     * *
+     *
+     * @param bet BetOption to convert
+     * @return returns a Integer converted from the parameter returns null if
+     * cant convert
+     */
+    public static Integer getBetOptionAs_Integer(BetOption bet) {
+        try {
+            return Integer.parseInt(bet.toString().substring(1));
+        } catch (NumberFormatException e) {
+        }
+        return null;
+    }
 }
