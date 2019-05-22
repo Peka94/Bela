@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package BelaProject;
-
+ 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-
+ 
 /**
  *
  * @author Pepe
@@ -75,14 +75,22 @@ public class Game implements Casino  {
         losers.clear();
         for (Player player : players) {
            if (player.isIsPlay()) {
+               boolean b;
                 if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
+                    b = false;
                 } else if (ProcessorBetOption.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
                     winners.add(player);
+                    b = false;
                 } else {
                     losers.add(player);
+                    b = true;
                 }
-           } 
+                if (player.getId() == PlayerID.BELA) {
+                   BelaPlayer bela = (BelaPlayer)(player);
+                   bela.setPrevRoundLoser(b);
+                }
+           }  
         }
     }
     
