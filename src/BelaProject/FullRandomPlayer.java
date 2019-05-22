@@ -11,7 +11,7 @@ public class FullRandomPlayer extends Player {
     @Override
     public BetOption myBet() {
         setBet(new Random().nextInt(Casino.MaxBet));
-        return ProcessorBetOption.getRandom_ElementAs_BetOption();
+        return Math.random()>=0.5? ProcessorBetOption.getRandom_ColorAs_BetOption():ProcessorBetOption.getRandom_NumberAs_BetOption();
     }
 
 }
