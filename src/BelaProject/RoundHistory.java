@@ -4,19 +4,17 @@ public class RoundHistory {
 
     private final Enum playerId;
     private final int bet;
-    private final RouletteNumber giveYourNumber;
+    private final BetOption giveYourNumber;
     private final RouletteNumber result;
     private final boolean winner;
-    private final int profit;
     private final int currentBudget;
 
-    public RoundHistory(Enum playerId, int bet, RouletteNumber giveYourNumber, RouletteNumber result, boolean winner, int profit, int currentBudget) {
+    public RoundHistory(Enum playerId, int bet, BetOption giveYourNumber, RouletteNumber result, boolean winner, int currentBudget) {
         this.playerId = playerId;
         this.bet = bet;
         this.giveYourNumber = giveYourNumber;
         this.result = result;
         this.winner = winner;
-        this.profit = profit;
         this.currentBudget = currentBudget;
     }
 
@@ -28,7 +26,7 @@ public class RoundHistory {
         return bet;
     }
 
-    public RouletteNumber getGiveYourNumber() {
+    public BetOption getGiveYourNumber() {
         return giveYourNumber;
     }
 
@@ -38,10 +36,6 @@ public class RoundHistory {
 
     public boolean isWinner() {
         return winner;
-    }
-
-    public int getProfit() {
-        return profit;
     }
 
     public int getCurrentBudget() {
