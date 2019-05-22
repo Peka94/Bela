@@ -90,7 +90,14 @@ public class Croupier {
     
     private static void getSimulation(){
         Game game = new Game();
-        
+        for (int i = 0; i < 10; i++) {
+            game.getRound();
+            
+        }
+        for (int j = 0; j < game.history.size(); j++) {
+                System.out.println((j+1)+". menet "+game.history.get(j).getPlayerId()+" "+game.history.get(j).getBet()+" Ft tét. "+game.history.get(j).getGiveYourNumber()+" fogadás -"+game.history.get(j).isWinner()+" kimenetel - "+game.history.get(j).getCurrentBudget()+" jelenlegi pénze.");
+                
+            }
     }
 }
     
