@@ -3,7 +3,7 @@ package BelaProject;
 public class RandomColorPlayer extends Player {
 
     public RandomColorPlayer(int startBudget) {
-        super(startBudget);
+        super(startBudget, PlayerID.RANDOMCOLOR);
     }
 
     @Override

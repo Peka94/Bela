@@ -2,10 +2,10 @@ package BelaProject;
 
 import java.util.Random;
 
-public class FullRandomPlayer extends Player{
+public class FullRandomPlayer extends Player {
 
     public FullRandomPlayer(int startBudget) {
-        super(startBudget);
+        super(startBudget, PlayerID.FULLRANDOM);
     }
 
     @Override
