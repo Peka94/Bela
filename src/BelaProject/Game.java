@@ -32,7 +32,11 @@ public class Game implements Casino  {
          
     // egy adott kör végigvitele
     public void getRound() {
-        giveYourNumber();
+        for (Player player : players) {
+            if (player.getCurrentBet() > Casino.MinBet && player.getCurrentBet() < Casino.MaxBet) {
+                giveYourNumber();
+            }
+        }
         spin();
         checkWinners();
         changePlayersBudget();
@@ -49,6 +53,9 @@ public class Game implements Casino  {
     
     // Az adott körben a pörgetés        
     public void spin() {
+        for (Player player : players) {
+           
+        }
         currentSolution = rand.nextInt(RouletteWheel.numbers.size());
     }
     
@@ -60,7 +67,7 @@ public class Game implements Casino  {
            if (player.isIsPlay()) {
                 if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
-                } else if (BetOptionProcessor.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
+                } else if (ProcessorBetOption.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
                     winners.add(player);
                 } else {
                     losers.add(player);
