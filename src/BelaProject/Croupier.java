@@ -26,11 +26,11 @@ public class Croupier {
     
     /*Ebben a metódusban a felhasználó választhat szimuláció vagy egyszemélyes mód között. 
     A választása alapján hívjuk meg az adott módnak a metódusát. Amennyiben abból a metódusból kilépett,
-    ebben a menürészben  */
+    ebben a menürészben rákérdez, hogy kilépünk-e a programból. */
     private static boolean getMainMenu(){
-        System.out.println("˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘");
-        System.out.println("                     (･_･)( ･_)(　･)(　RULETT　)(･　)(_･ )(･_･)");
-        System.out.println("");
+        System.out.println("----------------------------------------------------------------------------------");
+        System.out.println("|                     (･_･)( ･_)(　･)(　RULETT　)(･　)(_･ )(･_･)                    |");
+        System.out.println("----------------------------------------------------------------------------------");
         System.out.println("______________________________________FŐMENÜ______________________________________");
         System.out.println("");
         System.out.println("Szimuláció végzéséhez nyomja meg az 1- es gombot, majd Enter.");
@@ -50,7 +50,7 @@ public class Croupier {
                 }
             }while(!program.equals("1") && !program.equals("2") && !program.equals("q"));
             if(program.equals("1")){
-                
+                getSimulation();
             }else if(program.equals("2")){
                 
             }else{
@@ -86,6 +86,11 @@ public class Croupier {
             }
         }while(!quit.equals("Y")&& !quit.equals("y") && !quit.equals("N") && !quit.equals("n"));
         return false;
+    }
+    
+    private static void getSimulation(){
+        Game game = new Game();
+        
     }
 }
     
