@@ -9,9 +9,10 @@ public class BelaPlayer extends Player {
         super(startBudget, PlayerID.BELA);
         prevRoundLoser = false;
         originalBet = Casino.MinBet;
+        
     }
 
-    public void doubleBet() {
+    private void doubleBet() {
         if (prevRoundLoser) {
             this.setBet(this.getCurrentBet() * 2);
         } else {
@@ -26,6 +27,7 @@ public class BelaPlayer extends Player {
 
     public void setPrevRoundLoser(boolean prevRoundLoser) {
         this.prevRoundLoser = prevRoundLoser;
+        doubleBet();
     }
 
 }
