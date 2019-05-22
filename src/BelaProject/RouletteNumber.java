@@ -11,9 +11,9 @@ package BelaProject;
  */
 public class RouletteNumber {
     private final int number;
-    private final Color color;
+    private final BetOption color;
 
-    public RouletteNumber(int number, Color color) {
+    public RouletteNumber(int number, BetOption color) {
         this.number = number;
         this.color = color;
     }
@@ -31,7 +31,7 @@ public class RouletteNumber {
      * returns the Color of the specific number
      * @return 
      */
-    public Color getColor() {
+    public BetOption getColor() {
         return color;
     }
     
