@@ -24,11 +24,21 @@ public class Game implements Casino  {
     Map<Player, BetOption> currentRound = new HashMap<>();
     RouletteWheel rw = new RouletteWheel();
     Random rand = new Random();
+    List<RoundHistory> history = new ArrayList<>();
     
     int currentSolution;
 //    public int MinBet = (int)(Math.random()*10+1);
 //    public int MaxBet = (int) (Math.random()*1000+1);
-         
+    
+    public Game(){
+        players.add(new BelaPlayer(10000));
+        players.add(new BravePlayer(10000));
+        players.add(new ConservativePlayer(10000));
+        players.add(new FullRandomPlayer(10000));
+        players.add(new RandomColorPlayer(10000));
+        players.add(new WaitingPlayer(10000));            
+    }
+    
     // egy adott kör végigvitele
     public void getRound() {
         giveYourNumber();
@@ -55,12 +65,11 @@ public class Game implements Casino  {
     public void checkWinners() {
         
         for (Player player : players) {
-           if (player.isIsPlay()) {
-               if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
-               winners.add(player);
-               
-           } 
-        }
+            if (player.isIsPlay()) {
+                if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
+                    winners.add(player);
+                }
+            }
         }
     }
     // ha a játékos az adott körben játszik, és nyer vagy veszít, úgy változtatjuk az egyenlegét
@@ -74,6 +83,24 @@ public class Game implements Casino  {
                 player.setCurrentBudget(player.getCurrentBudget());
             }
         }
+    }
+    
+    public void fillRoundHistory(){
+        for (Player winner : winners) {
+            for (Map.Entry<Player, BetOption> e : currentRound.entrySet()) {
+                if (e.getKey().getId() == winner.getId()){
+                    history.add(new RoundHistory(winner.getId(), winner.getCurrentBet(), e.getKey().myBet(), RouletteWheel.numbers.get(currentSolution), true, winner.getCurrentBudget()));
+                }
+            }
+        }
+        for (Player loser : losers) {
+            for (Map.Entry<Player, BetOption> e : currentRound.entrySet()) {
+                if (e.getKey().getId() == loser.getId()){
+                    history.add(new RoundHistory(loser.getId(), loser.getCurrentBet(), e.getKey().myBet(), RouletteWheel.numbers.get(currentSolution), true, loser.getCurrentBudget()));
+                }
+            }
+        }
+        
     }
     
 }
