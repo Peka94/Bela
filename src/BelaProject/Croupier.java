@@ -42,13 +42,13 @@ public class Croupier {
                 try{
                     Scanner sc = new Scanner(System.in);
                     program = sc.nextLine();
-                    if(!program.equals("1") && !program.equals("2") && !program.equals("q")){
+                    if(!program.equals("1") && !program.equals("2") && !program.equals("q") && !program.equals("Q")){
                         System.out.println("Kérlek 1 vagy 2 számot adj meg!");
                     }
                 }catch(InputMismatchException e){
                     System.out.println("Kérlek számot adj meg!");
                 }
-            }while(!program.equals("1") && !program.equals("2") && !program.equals("q"));
+            }while(!program.equals("1") && !program.equals("2") && !program.equals("q") && !program.equals("Q"));
             if(program.equals("1")){
                 getSimulation();
             }else if(program.equals("2")){
