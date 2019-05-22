@@ -11,7 +11,7 @@ public class FullRandomPlayer extends Player {
     @Override
     public BetOption myBet() {
         setBet(new Random().nextInt(Integer.MAX_VALUE));
-        return BetOptionProcessor.getRandom_ElementAs_BetOption();
+        return ProcessorBetOption.getRandom_ElementAs_BetOption();
     }
 
 }
