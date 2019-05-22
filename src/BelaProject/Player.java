@@ -5,7 +5,7 @@ public abstract class Player {
     private final int startBudget;
     private int currentBudget;
     private boolean isPlay;
-    private int currentBet;
+    private int currentBet= Casino.MinBet;
     private final PlayerID id;
 
     public Player(int startBudget, PlayerID id) {
