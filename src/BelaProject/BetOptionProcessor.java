@@ -114,19 +114,22 @@ public class BetOptionProcessor {
     public static String getRandom_TwelveAs_String() {
         return getRandom_TwelveAs_BetOption().toString();
     }
-    /***
-     * 
+
+    /**
+     * *
+     *
      * @return returns randomly an odd or even as BetOption enum
      */
     public static BetOption getRandomly_Odd_EvenAs_BetOption() {
         return Math.random() >= 0.5 ? BetOption._ODD : BetOption._EVEN;
     }
-    
-    /***
-     * 
-     * @return returns ranndomly an odd or even as String 
+
+    /**
+     * *
+     *
+     * @return returns ranndomly an odd or even as String
      */
-    public static String getRandomly_Odd_EvenAs_String(){
-        return  getRandomly_Odd_EvenAs_BetOption().toString().substring(1);
+    public static String getRandomly_Odd_EvenAs_String() {
+        return getRandomly_Odd_EvenAs_BetOption().toString().substring(1);
     }
 }
