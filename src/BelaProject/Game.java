@@ -25,14 +25,28 @@ public class Game implements Casino  {
     Map<Player, BetOption> currentRound = new HashMap<>();
     RouletteWheel rw = new RouletteWheel();
     Random rand = new Random();
+    List<RoundHistory> history = new ArrayList<>();
     
     int currentSolution;
 //    public int MinBet = (int)(Math.random()*10+1);
 //    public int MaxBet = (int) (Math.random()*1000+1);
-         
+    
+    public Game(){
+        players.add(new BelaPlayer(10000));
+        players.add(new BravePlayer(10000));
+        players.add(new ConservativePlayer(10000));
+        players.add(new FullRandomPlayer(10000));
+        players.add(new RandomColorPlayer(10000));
+        players.add(new WaitingPlayer(10000));            
+    }
+    
     // egy adott kör végigvitele
     public void getRound() {
-        giveYourNumber();
+        for (Player player : players) {
+            if (player.getCurrentBet() > Casino.MinBet && player.getCurrentBet() < Casino.MaxBet) {
+                giveYourNumber();
+            }
+        }
         spin();
         checkWinners();
         changePlayersBudget();
@@ -49,6 +63,9 @@ public class Game implements Casino  {
     
     // Az adott körben a pörgetés        
     public void spin() {
+        for (Player player : players) {
+           
+        }
         currentSolution = rand.nextInt(RouletteWheel.numbers.size());
     }
     
@@ -60,7 +77,7 @@ public class Game implements Casino  {
            if (player.isIsPlay()) {
                 if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
-                } else if (BetOptionProcessor.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
+                } else if (ProcessorBetOption.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
                     winners.add(player);
                 } else {
                     losers.add(player);
@@ -77,6 +94,24 @@ public class Game implements Casino  {
         for (Player loser : losers) {
             loser.setCurrentBudget(loser.getCurrentBudget() - loser.getCurrentBet());
         }
+    }
+    
+    public void fillRoundHistory(){
+        for (Player winner : winners) {
+            for (Map.Entry<Player, BetOption> e : currentRound.entrySet()) {
+                if (e.getKey().getId() == winner.getId()){
+                    history.add(new RoundHistory(winner.getId(), winner.getCurrentBet(), e.getKey().myBet(), RouletteWheel.numbers.get(currentSolution), true, winner.getCurrentBudget()));
+                }
+            }
+        }
+        for (Player loser : losers) {
+            for (Map.Entry<Player, BetOption> e : currentRound.entrySet()) {
+                if (e.getKey().getId() == loser.getId()){
+                    history.add(new RoundHistory(loser.getId(), loser.getCurrentBet(), e.getKey().myBet(), RouletteWheel.numbers.get(currentSolution), true, loser.getCurrentBudget()));
+                }
+            }
+        }
+        
     }
     
 }

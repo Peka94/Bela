@@ -147,4 +147,32 @@ public class ProcessorBetOption {
         }
         return null;
     }
+
+    public static boolean numberEquals(Integer i, BetOption bet) {
+
+        Integer j = ProcessorBetOption.getBetOptionAs_Integer(bet);
+        if (i == null || j == null) {
+            return false;
+        }
+        return (int) i == (int) j;
+    }
+
+    public static boolean numberEquals(BetOption bet1, BetOption bet2) {
+        Integer i = ProcessorBetOption.getBetOptionAs_Integer(bet1);
+        Integer j = ProcessorBetOption.getBetOptionAs_Integer(bet2);
+        if (i == null || j == null) {
+            return false;
+        }
+        return (int) i == (int) j;
+    }
+    
+    public static boolean isItInTheTwelve(BetOption myBet,int num){
+        switch(myBet){
+            case _FIRST_TWELVE:return num<13;
+            case _SECOND_TWELVE:return num>12 && num<25;
+            case _THIRD_TWELVE:return num>24;
+            default:return false;
+        }
+    }
+    
 }
