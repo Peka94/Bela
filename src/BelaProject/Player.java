@@ -6,11 +6,13 @@ public abstract class Player {
     private int currentBudget;
     private boolean isPlay;
     private int currentBet;
+    private final PlayerID id;
 
-    public Player(int startBudget) {
+    public Player(int startBudget, PlayerID id) {
         this.startBudget = startBudget;
         currentBudget = startBudget;
         isPlay = true;
+        this.id = id;
     }
 
     public int getStartBudget() {
@@ -36,13 +38,20 @@ public abstract class Player {
     public final void setIsPlay(boolean isPlay) {
         this.isPlay = isPlay;
     }
+
     public final void setBet(int bet) {
-        this.currentBet=bet;
+        this.currentBet = bet;
     }
 
-    /***
+    public PlayerID getId() {
+        return id;
+    }
+
+    /**
+     * *
      * Strategy az UML-ben
-     * @return 
+     *
+     * @return
      */
-    public abstract BetOption myBet();  
+    public abstract BetOption myBet();
 }

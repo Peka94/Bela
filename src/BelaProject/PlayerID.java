@@ -1,0 +1,5 @@
+package BelaProject;
+
+public enum PlayerID {
+    BELA, RANDOMCOLOR, FULLRANDOM, CONSERVATIVE, BRAVE, WAITING, _1326, HUMAN
+}

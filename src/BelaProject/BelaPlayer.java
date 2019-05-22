@@ -6,19 +6,19 @@ public class BelaPlayer extends Player {
     private final int originalBet;
 
     public BelaPlayer(int startBudget) {
-        super(startBudget);
-        prevRoundLoser=false;
-        originalBet=Casino.MinBet;
+        super(startBudget, PlayerID.BELA);
+        prevRoundLoser = false;
+        originalBet = Casino.MinBet;
     }
+
     public void doubleBet() {
         if (prevRoundLoser) {
-            this.setBet(this.getCurrentBet()*2);
-        }else{
+            this.setBet(this.getCurrentBet() * 2);
+        } else {
             this.setBet(originalBet);
         }
     }
-    
-    
+
     @Override
     public BetOption myBet() {
         return BetOption._RED;
@@ -27,5 +27,5 @@ public class BelaPlayer extends Player {
     public void setPrevRoundLoser(boolean prevRoundLoser) {
         this.prevRoundLoser = prevRoundLoser;
     }
-    
+
 }

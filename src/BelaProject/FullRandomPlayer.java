@@ -2,15 +2,16 @@ package BelaProject;
 
 import java.util.Random;
 
-public class FullRandomPlayer extends Player{
+public class FullRandomPlayer extends Player {
 
     public FullRandomPlayer(int startBudget) {
-        super(startBudget);
+        super(startBudget, PlayerID.FULLRANDOM);
     }
 
     @Override
     public BetOption myBet() {
-        return BetOption.values()[new Random().nextInt(BetOption.values().length)];
+        setBet(new Random().nextInt(Integer.MAX_VALUE));
+        return BetOptionProcessor.getRandom_ElementAs_BetOption();
     }
 
 }
