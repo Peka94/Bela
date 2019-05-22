@@ -11,7 +11,7 @@ public class WaitingPlayer extends Player {
     public WaitingPlayer(int startBudget) {
         super(startBudget, PlayerID.WAITING);
         waitingNumber = new Random().nextInt(7) + 4;
-        expects = BetOptionProcessor.getRandom_ColorAs_BetOption();
+        expects = ProcessorBetOption.getRandom_ColorAs_BetOption();
         setBet(new Random().nextInt(Integer.MAX_VALUE));
     }
 

@@ -2,7 +2,7 @@ package BelaProject;
 
 import java.util.Random;
 
-public class BetOptionProcessor {
+public class ProcessorBetOption {
 
     /**
      * *
