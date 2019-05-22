@@ -20,6 +20,7 @@ import java.util.Set;
 public class Game implements Casino  {
 
     List<Player> winners = new ArrayList<>();
+    List<Player> losers = new ArrayList<>();
     Set<Player> players = new HashSet<>();
     Map<Player, BetOption> currentRound = new HashMap<>();
     RouletteWheel rw = new RouletteWheel();
@@ -53,26 +54,28 @@ public class Game implements Casino  {
     
     // Ellenőrzi kik(ha esetleg többen lennének) nyertek az adott pörgetés(spin) után
     public void checkWinners() {
-        
+        winners.clear();
+        losers.clear();
         for (Player player : players) {
            if (player.isIsPlay()) {
-               if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
-               winners.add(player);
-               
+                if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
+                    winners.add(player);
+                } else if (BetOptionProcessor.getBetOptionAs_Integer(player.myBet()).equals(RouletteWheel.numbers.get(currentSolution).getNumber())) {
+                    winners.add(player);
+                } else {
+                    losers.add(player);
+                }
            } 
         }
-        }
     }
+    
     // ha a játékos az adott körben játszik, és nyer vagy veszít, úgy változtatjuk az egyenlegét
     public void changePlayersBudget() {
-        for (Player player : players) {
-            if (player.isIsPlay() && player.myBet().equals(currentSolution)) {
-                player.setCurrentBudget(player.getCurrentBudget() - player.getCurrentBet());
-            } else if (player.isIsPlay() && !player.myBet().equals(currentSolution)) {
-                player.setCurrentBudget(player.getCurrentBudget() + player.getCurrentBet()); 
-            } else { 
-                player.setCurrentBudget(player.getCurrentBudget());
-            }
+        for (Player winner : winners) {
+            winner.setCurrentBudget(winner.getCurrentBudget() + winner.getCurrentBet());
+        }
+        for (Player loser : losers) {
+            loser.setCurrentBudget(loser.getCurrentBudget() - loser.getCurrentBet());
         }
     }
     
