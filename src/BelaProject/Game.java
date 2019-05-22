@@ -10,42 +10,57 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 /**
  *
  * @author Pepe
  */
-public class Game implements Casino {
+public class Game implements Casino  {
 
-    
+    List<Player> winners = new ArrayList<>();
     Set<Player> players = new HashSet<>();
     Map<Player, BetOption> currentRound = new HashMap<>();
     RouletteWheel rw = new RouletteWheel();
+    Random rand = new Random();
+    
     int currentSolution;
 //    public int MinBet = (int)(Math.random()*10+1);
 //    public int MaxBet = (int) (Math.random()*1000+1);
          
-        
+    // egy adott kör végigvitele
+    public void getRound() {
+        giveYourNumber();
+        spin();
+        checkWinners();
+        changePlayersBudget();
+    }
+    
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
-    public void giveYourNumber() {
+    private void giveYourNumber() {
         for (Player player : players) {
-            player.myBet();
+            if (player.isIsPlay()) {
+                currentRound.put(player, player.myBet());
+            }
         }
     }
     
     // Az adott körben a pörgetés        
     public void spin() {
-        currentSolution = (int)(Math.random()*37);
-        
+        currentSolution = rand.nextInt(RouletteWheel.numbers.size());
     }
+    
     // Ellenőrzi kik(ha esetleg többen lennének) nyertek az adott pörgetés(spin) után
     public void checkWinners() {
-        List<Player> winners = new ArrayList<>();
+        
         for (Player player : players) {
-           if (player.isIsPlay() && player.myBet().equals(currentSolution)) {
+           if (player.isIsPlay()) {
+               if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                winners.add(player);
+               
            } 
+        }
         }
     }
     // ha a játékos az adott körben játszik, és nyer vagy veszít, úgy változtatjuk az egyenlegét
