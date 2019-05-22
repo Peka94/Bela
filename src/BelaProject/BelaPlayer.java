@@ -2,18 +2,17 @@ package BelaProject;
 
 public class BelaPlayer extends Player {
 
-    private boolean prevRoundLoser;
+    private static boolean prevRoundLoser;
     private final int originalBet;
 
     public BelaPlayer(int startBudget) {
         super(startBudget, PlayerID.BELA);
-        prevRoundLoser = false;
         originalBet = Casino.MinBet;
         
     }
 
     private void doubleBet() {
-        if (prevRoundLoser) {
+        if (!this.isIsWinner()) {
             this.setBet(this.getCurrentBet() * 2);
         } else {
             this.setBet(originalBet);
@@ -25,7 +24,11 @@ public class BelaPlayer extends Player {
         return BetOption._RED;
     }
 
-    public void setPrevRoundLoser(boolean prevRoundLoser) {
+    public static boolean isPrevRoundLoser() {
+        return prevRoundLoser;
+    }
+
+    public void setPrevRoundLoser() {
         this.prevRoundLoser = prevRoundLoser;
         doubleBet();
     }

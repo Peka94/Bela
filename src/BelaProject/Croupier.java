@@ -90,8 +90,9 @@ public class Croupier {
     
     private static void getSimulation(){
         Game game = new Game();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             game.getRound();
+            System.out.println(i+1);
             
         }
         System.out.println(game.history.size());

@@ -43,7 +43,11 @@ public class Game implements Casino  {
     // egy adott kör végigvitele
     public void getRound() {
         for (Player player : players) {
-            if (player.getCurrentBet() > Casino.MinBet && player.getCurrentBet() < Casino.MaxBet) {
+            if (player.getId() == PlayerID.BELA) {
+                BelaPlayer bela = (BelaPlayer)(player);
+                bela.setPrevRoundLoser();
+            }
+            if (player.getCurrentBet() >= Casino.MinBet && player.getCurrentBet() <= Casino.MaxBet) {
                 giveYourNumber();
             }
         }
@@ -64,9 +68,6 @@ public class Game implements Casino  {
     
     // Az adott körben a pörgetés        
     public void spin() {
-        for (Player player : players) {
-           
-        }
         currentSolution = rand.nextInt(RouletteWheel.numbers.size());
     }
     
@@ -76,25 +77,17 @@ public class Game implements Casino  {
         losers.clear();
         for (Player player : players) {
             if (player.isIsPlay()) {
-               boolean b;
                 if (player.myBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
-                    b = true;
+                    player.setIsWinner(true);
                 } else if (ProcessorBetOption.getBetOptionAs_Integer(player.myBet())!= null) {
                     if(ProcessorBetOption.getBetOptionAs_Integer(player.myBet()) == (RouletteWheel.numbers.get(currentSolution).getNumber())){
                         winners.add(player);
-                        b = true;
-                    }else {
-                        losers.add(player);
-                        b = false;
+                        player.setIsWinner(true);
                     }
-                } else {
+                }else {
                     losers.add(player);
-                    b = false;
-                }
-                if (player.getId() == PlayerID.BELA) {
-                   BelaPlayer bela = (BelaPlayer)(player);
-                   bela.setPrevRoundLoser(b);
+                    player.setIsWinner(false);
                 }
             }
         }
@@ -103,6 +96,7 @@ public class Game implements Casino  {
     // ha a játékos az adott körben játszik, és nyer vagy veszít, úgy változtatjuk az egyenlegét
     public void changePlayersBudget() {
         for (Player winner : winners) {
+            
             winner.setCurrentBudget(winner.getCurrentBudget() + winner.getCurrentBet());
         }
         for (Player loser : losers) {

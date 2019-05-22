@@ -5,6 +5,7 @@ public abstract class Player {
     private final int startBudget;
     private int currentBudget;
     private boolean isPlay;
+    private boolean isWinner;
     private int currentBet= Casino.MinBet;
     private final PlayerID id;
 
@@ -12,6 +13,7 @@ public abstract class Player {
         this.startBudget = startBudget;
         currentBudget = startBudget;
         isPlay = true;
+        isWinner = true;
         this.id = id;
     }
 
@@ -27,12 +29,20 @@ public abstract class Player {
         return isPlay;
     }
 
+    public boolean isIsWinner() {
+        return isWinner;
+    }
+
     public int getCurrentBet() {
         return currentBet;
     }
 
     public final void setCurrentBudget(int currentBudget) {
         this.currentBudget = currentBudget;
+    }
+
+    public void setIsWinner(boolean isWinner) {
+        this.isWinner = isWinner;
     }
 
     public final void setIsPlay(boolean isPlay) {
