@@ -10,7 +10,8 @@ public class FullRandomPlayer extends Player{
 
     @Override
     public BetOption myBet() {
-        return BetOption.values()[new Random().nextInt(BetOption.values().length)];
+        setBet(new Random().nextInt(Integer.MAX_VALUE));
+        return BetOptionProcessor.getRandom_ElementAs_BetOption();
     }
 
 }
