@@ -43,6 +43,11 @@ public class Game implements Casino {
         players.add(new WaitingPlayer(10000));
     }
 
+    public Game(SinglePlayer sp){
+        players.add(sp);
+    }
+
+    
     // egy adott kör végigvitele
     public void getRound() {
         currentRound.clear();
@@ -61,7 +66,8 @@ public class Game implements Casino {
         fillHistory();
         fillRoundHistory();
     }
-
+    
+    
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
     private void giveYourNumber(Player player) {
 //        for (Player player : players) {
