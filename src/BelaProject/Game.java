@@ -42,12 +42,13 @@ public class Game implements Casino {
 
     // egy adott kör végigvitele
     public void getRound() {
+        currentRound.clear();
         for (Player player : players) {
             if (player.getId() == PlayerID.BELA) {
                 BelaPlayer bela = (BelaPlayer) (player);
                 bela.setPrevRoundLoser();
             }
-            if (player.getCurrentBet() >= Casino.MinBet && player.getCurrentBet() <= Casino.MaxBet && player.getCurrentBudget()>= player.getCurrentBet()) {
+            if (player.getCurrentBet() >= Casino.MinBet && player.getCurrentBet() <= Casino.MaxBet && player.getCurrentBudget() >= player.getCurrentBet()) {
                 giveYourNumber(player);
             }
         }
@@ -60,10 +61,10 @@ public class Game implements Casino {
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
     private void giveYourNumber(Player player) {
 //        for (Player player : players) {
-            if (player.isIsPlay()) {
-                player.myBet();
+        if (player.isIsPlay()) {
+            player.myBet();
                 currentRound.put(player, player.getMyBet());
-            }
+        }
 //        }
     }
 
@@ -76,7 +77,7 @@ public class Game implements Casino {
     public void checkWinners() {
         winners.clear();
         losers.clear();
-        for (Player player : players) {
+        for (Player player : currentRound.keySet()) {
             if (player.isIsPlay()) {
                 if (player.getMyBet().equals(RouletteWheel.numbers.get(currentSolution).getColor())) {
                     winners.add(player);
@@ -105,7 +106,9 @@ public class Game implements Casino {
             winner.setCurrentBudget(winner.getCurrentBudget() + winner.getCurrentBet());
         }
         for (Player loser : losers) {
-            loser.setCurrentBudget(loser.getCurrentBudget() - loser.getCurrentBet());
+            if (loser.getMyBet()!=BetOption.NONE) {
+                loser.setCurrentBudget(loser.getCurrentBudget() - loser.getCurrentBet());
+            }
         }
     }
 
