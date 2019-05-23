@@ -36,7 +36,7 @@ public class WaitingPlayer extends Player {
                 setMyBet(expects);
             }
         }
-        setMyBet(BetOption.NONE);
+        setMyBet(BetOption._NONE);
     }
 
 }

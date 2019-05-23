@@ -8,7 +8,7 @@ _20,_21,_22,_23,_24,_25,_26,_27,_28,_29,
 _30,_31,_32,_33,_34,_35,_36,
 _BLACK,_RED,_GREEN,
 _EVEN,_ODD,
-NONE
+_NONE
 //EVEN = PÁROS
 //ODD = PÁRATLAN
 }
