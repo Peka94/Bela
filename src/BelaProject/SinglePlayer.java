@@ -6,9 +6,12 @@ public class SinglePlayer extends Player{
         super(startBudget, id);
     }
 
+    public void setHumanBet(BetOption value){
+        this.setMyBet(value);
+    }
     @Override
-    public BetOption myBet() {
-        return Croupier.humanBet;
+    public void myBet() {
+        
     }
 
 }

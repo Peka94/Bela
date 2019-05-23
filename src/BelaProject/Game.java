@@ -51,7 +51,10 @@ public class Game implements Casino {
                 giveYourNumber(player);
             }
         }
-        
+        spin();
+        checkWinners();
+        changePlayersBudget();
+        fillRoundHistory();
     }
 
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
