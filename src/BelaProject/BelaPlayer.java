@@ -8,6 +8,7 @@ public class BelaPlayer extends Player {
     public BelaPlayer(int startBudget) {
         super(startBudget, PlayerID.BELA);
         originalBet = Casino.MinBet;
+        setBet(originalBet);
         
     }
 
