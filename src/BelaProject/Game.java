@@ -36,11 +36,11 @@ public class Game implements Casino {
 
     public Game() {
         players.add(new BelaPlayer(10000));
-        players.add(new BravePlayer(10000));
-        players.add(new ConservativePlayer(10000));
-        players.add(new FullRandomPlayer(10000));
-        players.add(new RandomColorPlayer(10000));
-        players.add(new WaitingPlayer(10000));
+//        players.add(new BravePlayer(10000));
+//        players.add(new ConservativePlayer(10000));
+//        players.add(new FullRandomPlayer(10000));
+//        players.add(new RandomColorPlayer(10000));
+//        players.add(new WaitingPlayer(10000));
     }
 
     public Game(SinglePlayer sp){
@@ -69,7 +69,12 @@ public class Game implements Casino {
     
     public void getRoundwithPlayer(SinglePlayer sp){
         currentRound.clear();
-        players.add(sp);
+        history.clear();
+        for (Player player : players) {
+            if (player.isIsPlay()) {
+                currentRound.put(player, player.getMyBet());
+            }
+        }
         spin();
         checkWinners();
         changePlayersBudget();

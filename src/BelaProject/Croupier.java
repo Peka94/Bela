@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Croupier {
 
     public static SinglePlayer sp = new SinglePlayer(0, PlayerID.BELA);
+    public static int i = 0;
     
     public static void main(String[] args) {
         //Ezzel a metódussal érjük el a főmenüt
@@ -95,8 +96,8 @@ public class Croupier {
         for (int i = 0; i < 100; i++) {
             game.getRound();
             System.out.println((i+1)+". menet");
+            
             for (int j = 0; j < game.roundHistory.get(i).size(); j++) {
-                
                 System.out.println("\t"+game.roundHistory.get(i).get(j).getPlayerId()+" " + game.roundHistory.get(i).get(j).getBet() + " Ft tét. " + game.roundHistory.get(i).get(j).getGiveYourNumber() + " fogadás -" + game.roundHistory.get(i).get(j).isWinner() + " kimenetel - " + game.roundHistory.get(i).get(j).getCurrentBudget() + " jelenlegi pénze.");
             }
         }
@@ -110,10 +111,10 @@ public class Croupier {
             giveYourNumber();
             Game game=new Game(sp);
             game.getRoundwithPlayer(sp);
-            int i = 0;
             for (int j = 0; j < game.roundHistory.get(i).size(); j++) {
                 
                 System.out.println("\t"+game.roundHistory.get(i).get(j).getPlayerId()+" " + game.roundHistory.get(i).get(j).getBet() + " Ft tét. " + game.roundHistory.get(i).get(j).getGiveYourNumber() + " fogadás -" + game.roundHistory.get(i).get(j).isWinner() + " kimenetel - " + game.roundHistory.get(i).get(j).getCurrentBudget() + " jelenlegi pénze.");
+                i++;
             }
         }
     }
