@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Croupier {
 
-    public static BetOption humanBet;
+    public static SinglePlayer sp = new SinglePlayer(0, PlayerID.BELA);
     
     public static void main(String[] args) {
         //Ezzel a metódussal érjük el a főmenüt
@@ -101,12 +101,11 @@ public class Croupier {
     }
 
     private static void getSinglePlayer() {
-        boolean quit = giveYourBank();
-        if(quit){
+        if(!giveYourBank()){
             
         }else{
-            
-            
+            giveYourBet();
+            giveYourNumber();
         }
     }
     
@@ -130,11 +129,11 @@ public class Croupier {
                 System.out.println("Kérlek számot adj meg!");
             }
         } while (!go);
-        giveYourBet(new SinglePlayer(program, PlayerID.HUMAN));
+        sp.setCurrentBudget(program);
         return true;
     }
     
-    private static int giveYourBet(SinglePlayer sp){
+    private static void giveYourBet(){
         System.out.println("A kaszinó minimum alaptétje 100 Ft és a maximum alaptétje 10000 Ft.");
         System.out.println("Mennyit kockáztatsz?");
         int program = 0;
@@ -154,10 +153,6 @@ public class Croupier {
                 System.out.println("Kérlek számot adj meg!");
             }
         } while (!go);
-        giveYourNumber();
-        
-        
-        return program;
     }
     
     private static void giveYourNumber(){
@@ -179,7 +174,7 @@ public class Croupier {
                     String v = value.toString();
                     if (program.equals(v.substring(1))) {
                         count++;
-                        humanBet = value;
+                        sp.setMyBet(value);
                     }
                 }
                 if (count == 0) {
@@ -191,5 +186,6 @@ public class Croupier {
                 System.out.println("nem okés!");
             }
         } while (!go);
+        
     }
 }
