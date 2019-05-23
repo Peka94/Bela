@@ -47,14 +47,15 @@ public class Game implements Casino  {
                 BelaPlayer bela = (BelaPlayer)(player);
                 bela.setPrevRoundLoser();
             }
-            if (player.getCurrentBet() >= Casino.MinBet && player.getCurrentBet() <= Casino.MaxBet) {
+            if (player.getCurrentBet() >= Casino.MinBet && player.getCurrentBet() <= Casino.MaxBet && player.getCurrentBudget()>= player.getCurrentBet()) {
                 giveYourNumber();
+                spin();
+                checkWinners();
+                changePlayersBudget();
+                fillRoundHistory();
             }
         }
-        spin();
-        checkWinners();
-        changePlayersBudget();
-        fillRoundHistory();
+        
     }
     
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
