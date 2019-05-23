@@ -126,7 +126,7 @@ public class Game implements Casino {
             winner.setCurrentBudget(winner.getCurrentBudget() + winner.getCurrentBet());
         }
         for (Player loser : losers) {
-            if (loser.getMyBet()!=BetOption.NONE) {
+            if (loser.getMyBet()!=BetOption._NONE) {
                 loser.setCurrentBudget(loser.getCurrentBudget() - loser.getCurrentBet());
             }
         }
