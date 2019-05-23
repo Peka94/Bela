@@ -8,7 +8,7 @@ public class SinglePlayer extends Player{
 
     @Override
     public BetOption myBet() {
-    
+        return Croupier.humanBet;
     }
 
 }

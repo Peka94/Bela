@@ -124,6 +124,7 @@ public class Croupier {
                     return false;
                 }else{
                     go = true;
+                    
                 }
             } catch (Exception e) {
                 System.out.println("Kérlek számot adj meg!");
@@ -147,6 +148,7 @@ public class Croupier {
                 }
                 else{
                     go = true;
+                    sp.setBet(program);
                 }
             } catch (Exception e) {
                 System.out.println("Kérlek számot adj meg!");
