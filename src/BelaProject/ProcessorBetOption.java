@@ -94,26 +94,26 @@ public class ProcessorBetOption {
      *
      * @return returns a random twelve as BetOption enum
      */
-    public static BetOption getRandom_TwelveAs_BetOption() {
-        int i = new Random().nextInt(3);
-        switch (i) {
-            case 0:
-                return BetOption._FIRST_TWELVE;
-            case 1:
-                return BetOption._SECOND_TWELVE;
-            default:
-                return BetOption._THIRD_TWELVE;
-        }
-    }
+//    public static BetOption getRandom_TwelveAs_BetOption() {
+//        int i = new Random().nextInt(3);
+//        switch (i) {
+//            case 0:
+//                return BetOption._FIRST_TWELVE;
+//            case 1:
+//                return BetOption._SECOND_TWELVE;
+//            default:
+//                return BetOption._THIRD_TWELVE;
+//        }
+//    }
 
     /**
      * *
      *
      * @return returns a random twelve converted to String
      */
-    public static String getRandom_TwelveAs_String() {
-        return getRandom_TwelveAs_BetOption().toString();
-    }
+//    public static String getRandom_TwelveAs_String() {
+//        return getRandom_TwelveAs_BetOption().toString();
+//    }
 
     /**
      * *
@@ -166,13 +166,13 @@ public class ProcessorBetOption {
         return (int) i == (int) j;
     }
     
-    public static boolean isItInTheTwelve(BetOption myBet,int num){
-        switch(myBet){
-            case _FIRST_TWELVE:return num<13;
-            case _SECOND_TWELVE:return num>12 && num<25;
-            case _THIRD_TWELVE:return num>24;
-            default:return false;
-        }
-    }
+//    public static boolean isItInTheTwelve(BetOption myBet,int num){
+//        switch(myBet){
+//            case _FIRST_TWELVE:return num<13;
+//            case _SECOND_TWELVE:return num>12 && num<25;
+//            case _THIRD_TWELVE:return num>24;
+//            default:return false;
+//        }
+//    }
     
 }

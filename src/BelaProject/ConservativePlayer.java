@@ -8,8 +8,8 @@ public class ConservativePlayer extends Player {
     }
 
     @Override
-    public BetOption myBet() {
-        return BetOption._RED;
+    public void myBet() {
+        setMyBet(BetOption._RED);
     }
 
 }

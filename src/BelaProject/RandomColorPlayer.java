@@ -7,9 +7,9 @@ public class RandomColorPlayer extends Player {
     }
 
     @Override
-    public BetOption myBet() {
+    public void myBet() {
         setBet(100);
-        return Math.random() > 0.5 ? BetOption._BLACK : BetOption._RED;
+        setMyBet(Math.random() > 0.5 ? BetOption._BLACK : BetOption._RED);
     }
 
 }

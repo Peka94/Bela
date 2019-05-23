@@ -8,6 +8,7 @@ public abstract class Player {
     private boolean isWinner;
     private int currentBet= Casino.MinBet;
     private final PlayerID id;
+    private BetOption myBet;
 
     public Player(int startBudget, PlayerID id) {
         this.startBudget = startBudget;
@@ -63,5 +64,14 @@ public abstract class Player {
      *
      * @return
      */
-    public abstract BetOption myBet();
+    public abstract void myBet();
+
+    public BetOption getMyBet() {
+        return myBet;
+    }
+
+    protected final void setMyBet(BetOption myBet) {
+        this.myBet = myBet;
+    }
+    
 }

@@ -20,8 +20,8 @@ public class BelaPlayer extends Player {
     }
 
     @Override
-    public BetOption myBet() {
-        return BetOption._RED;
+    public void myBet() {
+        setMyBet(BetOption._RED);
     }
 
     public static boolean isPrevRoundLoser() {

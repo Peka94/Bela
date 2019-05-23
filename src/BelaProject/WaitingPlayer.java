@@ -25,18 +25,18 @@ public class WaitingPlayer extends Player {
     }
 
     @Override
-    public BetOption myBet() {
+    public void myBet() {
         if (expectSuccess == waitingNumber) {
             expectSuccess = 0;
             if (expects == BetOption._BLACK) {
                 expects = BetOption._RED;
-                return expects;
+                setMyBet(expects);
             } else {
                 expects = BetOption._BLACK;
-                return expects;
+                setMyBet(expects);
             }
         }
-        return BetOption.NONE;
+        setMyBet(BetOption.NONE);
     }
 
 }
