@@ -94,10 +94,16 @@ public class Croupier {
         Game game = new Game();
         for (int i = 0; i < 100; i++) {
             game.getRound();
+            System.out.println((i+1)+". menet");
+            for (int j = 0; j < game.roundHistory.get(i).size(); j++) {
+                
+                System.out.println("\t"+game.roundHistory.get(i).get(j).getPlayerId()+" " + game.roundHistory.get(i).get(j).getBet() + " Ft tét. " + game.roundHistory.get(i).get(j).getGiveYourNumber() + " fogadás -" + game.roundHistory.get(i).get(j).isWinner() + " kimenetel - " + game.roundHistory.get(i).get(j).getCurrentBudget() + " jelenlegi pénze.");
+            }
+            
         }
-        for (int j = 0; j < game.history.size(); j++) {
-            System.out.println((j + 1) + ". menet " + game.history.get(j).getPlayerId() + " " + game.history.get(j).getBet() + " Ft tét. " + game.history.get(j).getGiveYourNumber() + " fogadás -" + game.history.get(j).isWinner() + " kimenetel - " + game.history.get(j).getCurrentBudget() + " jelenlegi pénze.");
-        }
+//        for (int j = 0; j < game.history.size(); j++) {
+//            System.out.println((j + 1) + ". menet " + game.history.get(j).getPlayerId() + " " + game.history.get(j).getBet() + " Ft tét. " + game.history.get(j).getGiveYourNumber() + " fogadás -" + game.history.get(j).isWinner() + " kimenetel - " + game.history.get(j).getCurrentBudget() + " jelenlegi pénze.");
+//        }
     }
 
     private static void getSinglePlayer() {

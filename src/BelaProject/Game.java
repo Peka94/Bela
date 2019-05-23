@@ -8,6 +8,7 @@ package BelaProject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,7 +26,9 @@ public class Game implements Casino {
     Map<Player, BetOption> currentRound = new HashMap<>();
     RouletteWheel rw = new RouletteWheel();
     Random rand = new Random();
-    List<RoundHistory> history = new ArrayList<>();
+    ArrayList<RoundHistory> history = new ArrayList<>();
+    ArrayList< ArrayList<RoundHistory>> roundHistory = new ArrayList<>();
+    int count = 0;
 
     int currentSolution;
 //    public int MinBet = (int)(Math.random()*10+1);
@@ -54,12 +57,14 @@ public class Game implements Casino {
         spin();
         checkWinners();
         changePlayersBudget();
+        fillHistory();
         fillRoundHistory();
     }
 
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
     private void giveYourNumber(Player player) {
 //        for (Player player : players) {
+        history.clear();
             if (player.isIsPlay()) {
                 player.myBet();
                 currentRound.put(player, player.getMyBet());
@@ -109,7 +114,7 @@ public class Game implements Casino {
         }
     }
 
-    public void fillRoundHistory() {
+    public void fillHistory() {
         for (Player winner : winners) {
             for (Map.Entry<Player, BetOption> e : currentRound.entrySet()) {
                 if (e.getKey().getId() == winner.getId()) {
@@ -126,7 +131,20 @@ public class Game implements Casino {
                 }
             }
         }
-
     }
+    
+    public void fillRoundHistory(){
+        roundHistory.add(history);
+//        for (RoundHistory h : history) {
+//            if(count == 0 || count % 6 != 0){
+//                roundHistory.put(1, h);
+//            }
+//            else if(count % 6 == 0){
+//                roundHistory.put(roundHistory.size()+1, h);
+//            }
+//            
+//        }
+    }
+    
 
 }
