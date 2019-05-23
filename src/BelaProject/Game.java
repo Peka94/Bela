@@ -67,6 +67,15 @@ public class Game implements Casino {
         fillRoundHistory();
     }
     
+    public void getRoundwithPlayer(SinglePlayer sp){
+        currentRound.clear();
+        players.add(sp);
+        spin();
+        checkWinners();
+        changePlayersBudget();
+        fillHistory();
+        fillRoundHistory();
+    }
     
     // Az adott körben adjuk be azt a számot, amit szeretnénk megtenni
     private void giveYourNumber(Player player) {
@@ -144,15 +153,6 @@ public class Game implements Casino {
     
     public void fillRoundHistory(){
         roundHistory.add(history);
-//        for (RoundHistory h : history) {
-//            if(count == 0 || count % 6 != 0){
-//                roundHistory.put(1, h);
-//            }
-//            else if(count % 6 == 0){
-//                roundHistory.put(roundHistory.size()+1, h);
-//            }
-//            
-//        }
     }
     
 
